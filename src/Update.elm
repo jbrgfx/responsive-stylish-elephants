@@ -18,7 +18,10 @@ getScreenSize size =
         Phone
     else if size.width <= 1024 then
         Tablet
-    else if size.width <= 1800 then
-        Desktop
     else
-        BigDesktop
+        Desktop
+
+
+
+-- else
+--     BigDesktop
