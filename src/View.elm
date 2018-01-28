@@ -3,6 +3,7 @@ module View exposing (view)
 -- import AppStyles
 
 import Element exposing (..)
+import Element.Border as Border exposing (..)
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import Model exposing (..)
@@ -11,23 +12,20 @@ import Model exposing (..)
 blockAttributes screenSize =
     case screenSize of
         Phone ->
-            [ width (px 600), height (px 100) ]
+            [ Element.width (px 600), height (px 100) ]
 
         Tablet ->
-            [ width (px 1200), height (px 100) ]
+            [ Element.width (px 1200), height (px 100) ]
 
         Desktop ->
-            [ width (px 1800), height (px 100) ]
+            [ Element.width (px 1800), height (px 100) ]
 
 
 wrapper : Model -> Element Msg
 wrapper model =
     Element.row
         [ padding 4
-
-        -- , paddingTop 4
-        -- , paddingBottom 4
-        , spacing 10
+        , alignLeft
         ]
         [ pageArea model ]
 
@@ -36,7 +34,8 @@ pageArea : Model -> Element Msg
 pageArea model =
     if model.screenSize == Phone then
         Element.column
-            [ width (px 600) ]
+            [ Element.width (px 600)
+            ]
             [ headerArea
             , phoneMenu -- show instead of sidebarArea
             , contentArea model
@@ -44,7 +43,7 @@ pageArea model =
             ]
     else
         Element.column
-            [ width (px 1200) ]
+            []
             [ headerArea
             , contentArea model
             , footerArea
@@ -70,7 +69,7 @@ footerArea =
         [ newTabLink
             []
             { url = "https://github.com/jbrgfx"
-            , label = Element.text "jbrgfx's github repos."
+            , label = Element.text "jbrgfx's github repos"
             }
         ]
 
@@ -79,7 +78,7 @@ sidebarTitle : Element msg
 sidebarTitle =
     row
         [ padding 8 ]
-        [ Element.text "External Links"
+        [ Element.text "Sidebar Links"
         ]
 
 
@@ -87,10 +86,9 @@ phoneMenuTitle : Element msg
 phoneMenuTitle =
     row
         [ padding 6
-
-        -- , paddingBottom 2
+        , paddingBottom 2
         ]
-        [ Element.text "External Links »"
+        [ Element.text "Phone Menu »"
         ]
 
 
@@ -98,15 +96,18 @@ phoneMenu : Element msg
 phoneMenu =
     row
         [ padding 2
-
-        -- , paddingLeft 6
+        , paddingLeft 6
         ]
-        [ -- phoneMenuTitle
-          -- ,
-          newTabLink
+        [ phoneMenuTitle
+        , newTabLink
             []
-            { url = "https://github.com/jbrgfx"
-            , label = Element.text "jbrgfx's github repos."
+            { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
+            , label = Element.text "Test-drive, part 2 | "
+            }
+        , newTabLink
+            []
+            { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
+            , label = Element.text "Daily Drip"
             }
 
         -- , Element.link "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed" <|
@@ -124,13 +125,19 @@ sidebarArea model =
         Element.empty
     else
         row
-            []
-            [ -- elmlogo
-              -- ,
-              newTabLink
+            [ alignLeft
+            , spacing 8
+            ]
+            [ sidebarTitle
+            , newTabLink
                 []
-                { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
-                , label = Element.text "stylish-elephants 4.0.0: package docs"
+                { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
+                , label = Element.text "Test-drive, part 2 "
+                }
+            , newTabLink
+                []
+                { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
+                , label = Element.text "Daily Drip"
                 }
             ]
 
@@ -150,9 +157,9 @@ contentArea model =
 
 bodyWidth screenSize =
     if screenSize == Phone then
-        width (px 600)
+        Element.width (px 600)
     else
-        width (px 1200)
+        Element.width (px 800)
 
 
 blocks : Model -> List (Element Msg)
@@ -171,8 +178,48 @@ singleBlock model value =
 mainContentArea : Model -> Element Msg
 mainContentArea model =
     Element.row
-        [ padding 20, spacing 10, bodyWidth model.screenSize ]
+        [ bodyWidth model.screenSize ]
         (blocks model)
+
+
+
+{- credit: https://github.com/opsb/cv-elm/blob/master/src/Extra/Element.elm -}
+
+
+borderRight n =
+    Border.widthEach { right = n, left = 0, top = 0, bottom = 0 }
+
+
+borderBottom n =
+    Border.widthEach { right = 0, left = 0, top = 0, bottom = n }
+
+
+
+{- credit: https://github.com/opsb/cv-elm/blob/master/src/Extra/Element.elm -}
+
+
+paddingRight n =
+    paddingEach { right = n, left = 0, top = 0, bottom = 0 }
+
+
+paddingTop n =
+    paddingEach { bottom = 0, top = n, left = 0, right = 0 }
+
+
+
+{- credit: https://github.com/opsb/cv-elm/blob/master/src/Extra/Element.elm -}
+
+
+paddingBottom n =
+    paddingEach { bottom = n, top = 0, left = 0, right = 0 }
+
+
+
+{- credit: https://github.com/opsb/cv-elm/blob/master/src/Extra/Element.elm -}
+
+
+paddingLeft n =
+    paddingEach { right = 0, left = n, top = 0, bottom = 0 }
 
 
 
