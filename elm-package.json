@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Refactoring responsive example to use stylish-elephants 4.0.0",
-    "repository": "https://github.com/jbrgfx/responsive-stylish-elephants",
+    "repository": "https://github.com/jbrgfx/responsive-stylish-elephants.git",
     "license": "BSD3",
     "source-directories": [
         "src"
