@@ -15,13 +15,13 @@ import Model exposing (..)
 blockAttributes screenSize =
     case screenSize of
         Phone ->
-            [ Element.width (px 600), height (px 100) ]
+            [ Element.width (px 400), height (px 100) ]
 
         Tablet ->
-            [ Element.width (px 1200), height (px 100) ]
+            [ Element.width (px 600), height (px 100) ]
 
         Desktop ->
-            [ Element.width (px 1800), height (px 100) ]
+            [ Element.width (px 800), height (px 100) ]
 
 
 wrapper : Model -> Element Msg
@@ -49,7 +49,8 @@ pageArea model =
             , Element.alignLeft
             ]
             [ headerArea
-            , contentArea model
+            , contentArea
+                model
             , footerArea
             ]
 
@@ -173,7 +174,7 @@ bodyWidth screenSize =
 blocks : Model -> List (Element Msg)
 blocks model =
     List.map (\elem -> singleBlock model elem)
-        [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" ]
+        [ "One", "Two", "Three", "Four" ]
 
 
 singleBlock : Model -> String -> Element Msg
@@ -189,8 +190,7 @@ mainContentArea model =
         [ bodyWidth model.screenSize
         , Border.solid
         , Border.width 2
-
-        -- , Border.color black
+        , Background.color Color.lightBlue
         ]
         (blocks model)
 
