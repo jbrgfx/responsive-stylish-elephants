@@ -193,18 +193,6 @@ bodyWidth screenSize =
         Element.width (px 1200)
 
 
-
--- blocks : Model -> List (Element Msg)
--- blocks model =
---     List.map (\elem -> singleBlock model elem)
---         [ "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ]
--- singleBlock : Model -> String -> Element Msg
--- singleBlock model value =
---     el
---         (blockAttributes model.screenSize)
---         (Element.text value)
-
-
 type alias Person =
     { firstName : String
     , lastName : String
@@ -224,16 +212,6 @@ persons =
 
 mainContentArea : Model -> Element Msg
 mainContentArea model =
-    -- Element.column
-    --     [ bodyWidth model.screenSize
-    --     , Border.solid
-    --     , Border.width 2
-    --     , Background.color Color.lightBlue
-    --
-    --     -- , padding gutter
-    --     , spacing gutter
-    --     ]
-    --     (blocks model)
     Element.table
         []
         { data = persons
