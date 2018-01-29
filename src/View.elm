@@ -71,9 +71,9 @@ headerArea =
 footerArea : Element msg
 footerArea =
     row
-        [ Element.alignLeft ]
+        []
         [ newTabLink
-            [ Element.alignLeft ]
+            []
             { url = "https://github.com/jbrgfx"
             , label = Element.text "jbrgfx's github repos"
             }
@@ -272,10 +272,6 @@ paddingBottom n =
 
 paddingLeft n =
     paddingEach { right = 0, left = n, top = 0, bottom = 0 }
-
-
-
---
 
 
 view : Model -> Html Msg
