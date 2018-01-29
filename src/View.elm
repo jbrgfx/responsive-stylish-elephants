@@ -15,13 +15,22 @@ import Model exposing (..)
 blockAttributes screenSize =
     case screenSize of
         Phone ->
-            [ Element.width (px 400), height (px 100) ]
+            [ Element.width (px 200)
+
+            -- , height (px 100)
+            ]
 
         Tablet ->
-            [ Element.width (px 600), height (px 100) ]
+            [ Element.width (px 400)
+
+            -- , height (px 100)
+            ]
 
         Desktop ->
-            [ Element.width (px 800), height (px 100) ]
+            [ Element.width (px 600)
+
+            -- , height (px 100)
+            ]
 
 
 wrapper : Model -> Element Msg
@@ -45,11 +54,9 @@ pageArea model =
             ]
     else
         Element.column
-            [ Border.solid
-            , Border.width 1
-
-            -- , alignTop
-            -- , Element.alignLeft
+            [ -- Border.solid
+              -- , Border.width 1
+              Element.alignTop
             , paddingRight gutter
             , spaceEvenly
             ]
@@ -128,7 +135,7 @@ sidebarArea model =
             [ Border.solid
             , Border.width 1
             , Element.alignLeft
-            , Element.width (px 160)
+            , Element.width (px 130)
             ]
             [ sidebarTitle
             , row
