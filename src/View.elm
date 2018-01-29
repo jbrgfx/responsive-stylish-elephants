@@ -178,9 +178,7 @@ contentArea model =
             , Element.alignLeft
             , Border.solid
             , Border.width 1
-            , Element.width (px 300)
-
-            -- , Element.height (px 100)
+            , Element.width (px 380)
             ]
             [ mainContentArea model
             ]
@@ -198,6 +196,7 @@ bodyWidth screenSize =
 
 type alias Person =
     { firstName : String
+    , middleName : String
     , lastName : String
     }
 
@@ -205,9 +204,11 @@ type alias Person =
 persons : List Person
 persons =
     [ { firstName = "David"
+      , middleName = "Robert"
       , lastName = "Bowie"
       }
     , { firstName = "Florence"
+      , middleName = "Leontine Mary"
       , lastName = "Welch"
       }
     ]
@@ -223,6 +224,11 @@ mainContentArea model =
               , view =
                     \person ->
                         Element.text person.firstName
+              }
+            , { header = Element.text "Middle Name"
+              , view =
+                    \person ->
+                        Element.text person.middleName
               }
             , { header = Element.text "Last Name"
               , view =
