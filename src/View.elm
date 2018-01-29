@@ -111,7 +111,7 @@ phoneMenu =
             , spacingXY 10 0
             ]
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-            , label = Element.text "Test-drive | "
+            , label = Element.text "Test-drive Article"
             }
         , newTabLink
             [ Font.underline
@@ -119,8 +119,8 @@ phoneMenu =
             , Background.color Color.darkBlue
             , spacingXY 10 0
             ]
-            { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
-            , label = Element.text "Daily Drip"
+            { url = "https://github.com/billperegoy/elm-page-layout"
+            , label = Element.text "elm-page-layout"
             }
         ]
 
@@ -134,12 +134,14 @@ sidebarArea model =
             [ Border.solid
             , Border.width 1
             , Element.alignLeft
-            , Element.width (px 150)
+            , Element.width (px 200)
+            , Element.height (px 87)
+            , Font.size 16
             , paddingRight 10
             ]
             [ sidebarTitle
             , row
-                [ Element.width (px 90)
+                [ Element.width (px 110)
                 , Element.alignRight
                 , Font.underline
                 , Font.color Color.blue
@@ -147,11 +149,11 @@ sidebarArea model =
                 [ newTabLink
                     []
                     { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-                    , label = Element.text "Test-drive"
+                    , label = Element.text "Test-drive Article"
                     }
                 ]
             , row
-                [ Element.width (px 90)
+                [ Element.width (px 110)
                 , Element.alignRight
                 , Font.underline
                 , Font.color Color.blue
@@ -159,8 +161,8 @@ sidebarArea model =
                 [ newTabLink
                     -- , newTabLink
                     []
-                    { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
-                    , label = Element.text "Daily Drip"
+                    { url = "https://github.com/billperegoy/elm-page-layout"
+                    , label = Element.text "elm-page-layout"
                     }
                 ]
             ]
