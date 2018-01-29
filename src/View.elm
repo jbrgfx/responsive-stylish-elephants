@@ -1,7 +1,5 @@
 module View exposing (view)
 
--- import AppStyles
-
 import Color exposing (..)
 import Element exposing (..)
 import Element.Background as Background exposing (..)
@@ -16,20 +14,14 @@ blockAttributes screenSize =
     case screenSize of
         Phone ->
             [ Element.width (px 600)
-
-            -- , height (px 100)
             ]
 
         Tablet ->
             [ Element.width (px 800)
-
-            -- , height (px 100)
             ]
 
         Desktop ->
             [ Element.width (px 1200)
-
-            -- , height (px 100)
             ]
 
 
@@ -53,9 +45,7 @@ pageArea model =
             ]
     else
         Element.column
-            [ -- Border.solid
-              -- , Border.width 1
-              Element.alignTop
+            [ Element.alignTop
             , paddingRight gutter
             , spaceEvenly
             ]
@@ -171,10 +161,6 @@ contentArea model =
             [ mainContentArea model
             ]
         ]
-
-
-
---bodyWidth : ScreenSize -▷ Element.Internal.Model.Attribute variation msg
 
 
 bodyWidth screenSize =
