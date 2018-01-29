@@ -178,7 +178,7 @@ contentArea model =
             , Element.alignLeft
             , Border.solid
             , Border.width 1
-            , Element.width (px 400)
+            , Element.width (px 300)
 
             -- , Element.height (px 100)
             ]
