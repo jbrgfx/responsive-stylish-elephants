@@ -59,9 +59,9 @@ pageArea model =
 headerArea : Element Msg
 headerArea =
     row
-        [ Element.alignRight ]
+        [ Element.alignLeft ]
         [ newTabLink
-            []
+            [ Element.alignLeft ]
             { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
             , label = Element.text "stylish-elephants 4.0.0: package docs"
             }
@@ -71,9 +71,9 @@ headerArea =
 footerArea : Element msg
 footerArea =
     row
-        [ Element.alignRight ]
+        [ Element.alignLeft ]
         [ newTabLink
-            []
+            [ Element.alignLeft ]
             { url = "https://github.com/jbrgfx"
             , label = Element.text "jbrgfx's github repos"
             }
@@ -92,7 +92,8 @@ sidebarTitle =
 phoneMenuTitle : Element msg
 phoneMenuTitle =
     column
-        []
+        [ paddingLeft 0
+        ]
         [ Element.text "Phone Menu »"
         ]
 
@@ -100,15 +101,23 @@ phoneMenuTitle =
 phoneMenu : Element msg
 phoneMenu =
     row
-        []
+        [ Element.alignLeft ]
         [ phoneMenuTitle
         , newTabLink
-            [ Element.alignRight ]
+            [ Font.underline
+            , Font.color Color.white
+            , Background.color Color.darkBlue
+            , spacingXY 10 0
+            ]
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
             , label = Element.text "Test-drive | "
             }
         , newTabLink
-            []
+            [ Font.underline
+            , Font.color Color.white
+            , Background.color Color.darkBlue
+            , spacingXY 10 0
+            ]
             { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
             , label = Element.text "Daily Drip"
             }
@@ -124,12 +133,15 @@ sidebarArea model =
             [ Border.solid
             , Border.width 1
             , Element.alignLeft
-            , Element.width (px 130)
+            , Element.width (px 150)
+            , paddingRight 10
             ]
             [ sidebarTitle
             , row
                 [ Element.width (px 90)
                 , Element.alignRight
+                , Font.underline
+                , Font.color Color.blue
                 ]
                 [ newTabLink
                     []
@@ -140,6 +152,8 @@ sidebarArea model =
             , row
                 [ Element.width (px 90)
                 , Element.alignRight
+                , Font.underline
+                , Font.color Color.blue
                 ]
                 [ newTabLink
                     -- , newTabLink
@@ -157,7 +171,14 @@ contentArea model =
         [ padding gutter ]
         [ sidebarArea model
         , column
-            []
+            [ Element.padding 8
+            , Element.alignLeft
+            , Border.solid
+            , Border.width 1
+            , Element.width (px 400)
+
+            -- , Element.height (px 100)
+            ]
             [ mainContentArea model
             ]
         ]
@@ -172,31 +193,63 @@ bodyWidth screenSize =
         Element.width (px 1200)
 
 
-blocks : Model -> List (Element Msg)
-blocks model =
-    List.map (\elem -> singleBlock model elem)
-        [ "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ]
+
+-- blocks : Model -> List (Element Msg)
+-- blocks model =
+--     List.map (\elem -> singleBlock model elem)
+--         [ "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ]
+-- singleBlock : Model -> String -> Element Msg
+-- singleBlock model value =
+--     el
+--         (blockAttributes model.screenSize)
+--         (Element.text value)
 
 
-singleBlock : Model -> String -> Element Msg
-singleBlock model value =
-    el
-        (blockAttributes model.screenSize)
-        (Element.text value)
+type alias Person =
+    { firstName : String
+    , lastName : String
+    }
+
+
+persons : List Person
+persons =
+    [ { firstName = "David"
+      , lastName = "Bowie"
+      }
+    , { firstName = "Florence"
+      , lastName = "Welch"
+      }
+    ]
 
 
 mainContentArea : Model -> Element Msg
 mainContentArea model =
-    Element.column
-        [ bodyWidth model.screenSize
-        , Border.solid
-        , Border.width 2
-        , Background.color Color.lightBlue
-
-        -- , padding gutter
-        , spacing gutter
-        ]
-        (blocks model)
+    -- Element.column
+    --     [ bodyWidth model.screenSize
+    --     , Border.solid
+    --     , Border.width 2
+    --     , Background.color Color.lightBlue
+    --
+    --     -- , padding gutter
+    --     , spacing gutter
+    --     ]
+    --     (blocks model)
+    Element.table
+        []
+        { data = persons
+        , columns =
+            [ { header = Element.text "First Name"
+              , view =
+                    \person ->
+                        Element.text person.firstName
+              }
+            , { header = Element.text "Last Name"
+              , view =
+                    \person ->
+                        Element.text person.lastName
+              }
+            ]
+        }
 
 
 gutter =

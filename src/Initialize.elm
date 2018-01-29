@@ -5,4 +5,4 @@ import Model exposing (..)
 
 init : ( Model, Cmd Msg )
 init =
-    { screenSize = Phone } ! []
+    { screenSize = Desktop } ! []
