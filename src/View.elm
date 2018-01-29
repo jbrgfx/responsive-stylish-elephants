@@ -180,8 +180,10 @@ contentArea model =
 bodyWidth screenSize =
     if screenSize == Phone then
         Element.width (px 600)
-    else
+    else if screenSize == Tablet then
         Element.width (px 800)
+    else
+        Element.width (px 1000)
 
 
 blocks : Model -> List (Element Msg)
