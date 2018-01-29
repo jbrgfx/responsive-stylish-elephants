@@ -134,7 +134,7 @@ sidebarArea model =
             [ Border.solid
             , Border.width 1
             , Element.alignLeft
-            , Element.width (px 200)
+            , Element.width (px 180)
             , Element.height (px 87)
             , Font.size 16
             , paddingRight 10
