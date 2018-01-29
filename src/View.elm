@@ -12,11 +12,11 @@ import Model exposing (..)
 blockAttributes screenSize =
     case screenSize of
         Phone ->
-            [ Element.width (px 600)
+            [ Element.width (px 800)
             ]
 
         Tablet ->
-            [ Element.width (px 800)
+            [ Element.width (px 1000)
             ]
 
         Desktop ->
@@ -40,6 +40,7 @@ pageArea model =
             [ headerArea
             , phoneMenu -- show instead of sidebarArea
             , contentArea model
+            , aboutExperiment
             , footerArea
             ]
     else
@@ -51,6 +52,7 @@ pageArea model =
             [ headerArea
             , contentArea
                 model
+            , aboutExperiment
             , footerArea
             ]
 
@@ -185,9 +187,9 @@ contentArea model =
 
 bodyWidth screenSize =
     if screenSize == Phone then
-        Element.width (px 600)
-    else if screenSize == Tablet then
         Element.width (px 800)
+    else if screenSize == Tablet then
+        Element.width (px 1000)
     else
         Element.width (px 1200)
 
@@ -227,6 +229,14 @@ mainContentArea model =
               }
             ]
         }
+
+
+aboutExperiment =
+    paragraph
+        [ paddingBottom 20
+        , Font.size 14
+        ]
+        [ Element.text "This refactoring of https://github.com/billperegoy/elm-page-layout is an experiment in converting a style-elements 4.2.1. project into one that uses the stylish-elephants 4.0.0 (the next version of style-elements)." ]
 
 
 gutter =
