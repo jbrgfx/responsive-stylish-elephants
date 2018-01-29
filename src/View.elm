@@ -26,7 +26,7 @@ blockAttributes screenSize =
 
 wrapper : Model -> Element Msg
 wrapper model =
-    Element.row
+    Element.column
         []
         [ pageArea model ]
 
@@ -35,7 +35,9 @@ pageArea : Model -> Element Msg
 pageArea model =
     if model.screenSize == Phone then
         Element.column
-            []
+            [ padding gutter
+            , spaceEvenly
+            ]
             [ headerArea
             , phoneMenu -- show instead of sidebarArea
             , contentArea model
@@ -45,8 +47,11 @@ pageArea model =
         Element.column
             [ Border.solid
             , Border.width 1
-            , alignTop
-            , Element.alignLeft
+
+            -- , alignTop
+            -- , Element.alignLeft
+            , paddingRight gutter
+            , spaceEvenly
             ]
             [ headerArea
             , contentArea
@@ -91,9 +96,7 @@ sidebarTitle =
 phoneMenuTitle : Element msg
 phoneMenuTitle =
     row
-        [ padding 6
-        , paddingBottom 2
-        ]
+        []
         [ Element.text "Phone Menu »"
         ]
 
@@ -101,27 +104,18 @@ phoneMenuTitle =
 phoneMenu : Element msg
 phoneMenu =
     row
-        [ padding 2
-        , paddingLeft 6
-        ]
+        []
         [ phoneMenuTitle
         , newTabLink
             []
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-            , label = Element.text "Test-drive, part 2 | "
+            , label = Element.text "Test-drive | "
             }
         , newTabLink
             []
             { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
             , label = Element.text "Daily Drip"
             }
-
-        -- , Element.link "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed" <|
-        --     Element.description
-        --         "Test-drive, part 2 | "
-        -- , Element.link "https://www.dailydrip.com/topics/elm/drips/style-elements" <|
-        --     Element.description
-        --         "Daily Drip"
         ]
 
 
@@ -133,16 +127,26 @@ sidebarArea model =
         column
             [ Border.solid
             , Border.width 1
-            , Element.alignRight
+            , Element.alignLeft
+            , Element.width (px 160)
             ]
             [ sidebarTitle
-            , row []
+            , row
+                [ Element.width (px 90)
+                , Element.alignRight
+                ]
                 [ newTabLink
                     []
                     { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-                    , label = Element.text "Test-drive, part 2 "
+                    , label = Element.text "Test-drive"
                     }
-                , newTabLink
+                ]
+            , row
+                [ Element.width (px 90)
+                , Element.alignRight
+                ]
+                [ newTabLink
+                    -- , newTabLink
                     []
                     { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
                     , label = Element.text "Daily Drip"
@@ -154,9 +158,12 @@ sidebarArea model =
 contentArea : Model -> Element Msg
 contentArea model =
     row
-        [ padding 20 ]
+        [ padding gutter ]
         [ sidebarArea model
-        , mainContentArea model
+        , column
+            []
+            [ mainContentArea model
+            ]
         ]
 
 
@@ -191,6 +198,9 @@ mainContentArea model =
         , Border.solid
         , Border.width 2
         , Background.color Color.lightBlue
+
+        -- , padding gutter
+        , spacing gutter
         ]
         (blocks model)
 
@@ -247,7 +257,8 @@ view : Model -> Html Msg
 view model =
     Element.layout
         [ Background.color white
-        , paddingLeft gutter
+        , padding gutter
+        , spacing gutter
         ]
     <|
         wrapper model
