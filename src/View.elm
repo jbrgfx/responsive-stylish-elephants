@@ -2,8 +2,11 @@ module View exposing (view)
 
 -- import AppStyles
 
+import Color exposing (..)
 import Element exposing (..)
+import Element.Background as Background exposing (..)
 import Element.Border as Border exposing (..)
+import Element.Font as Font exposing (..)
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import Model exposing (..)
@@ -24,9 +27,7 @@ blockAttributes screenSize =
 wrapper : Model -> Element Msg
 wrapper model =
     Element.row
-        [ padding 4
-        , alignLeft
-        ]
+        []
         [ pageArea model ]
 
 
@@ -34,8 +35,7 @@ pageArea : Model -> Element Msg
 pageArea model =
     if model.screenSize == Phone then
         Element.column
-            [ Element.width (px 600)
-            ]
+            []
             [ headerArea
             , phoneMenu -- show instead of sidebarArea
             , contentArea model
@@ -43,7 +43,11 @@ pageArea model =
             ]
     else
         Element.column
-            []
+            [ Border.solid
+            , Border.width 1
+            , alignTop
+            , Element.alignLeft
+            ]
             [ headerArea
             , contentArea model
             , footerArea
@@ -53,7 +57,7 @@ pageArea model =
 headerArea : Element Msg
 headerArea =
     row
-        []
+        [ Element.alignRight ]
         [ newTabLink
             []
             { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
@@ -65,7 +69,7 @@ headerArea =
 footerArea : Element msg
 footerArea =
     row
-        []
+        [ Element.alignRight ]
         [ newTabLink
             []
             { url = "https://github.com/jbrgfx"
@@ -77,7 +81,8 @@ footerArea =
 sidebarTitle : Element msg
 sidebarTitle =
     row
-        [ padding 8 ]
+        [ padding 8
+        ]
         [ Element.text "Sidebar Links"
         ]
 
@@ -124,28 +129,31 @@ sidebarArea model =
     if model.screenSize == Phone then
         Element.empty
     else
-        row
-            [ alignLeft
-            , spacing 8
+        column
+            [ Border.solid
+            , Border.width 1
+            , Element.alignRight
             ]
             [ sidebarTitle
-            , newTabLink
-                []
-                { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-                , label = Element.text "Test-drive, part 2 "
-                }
-            , newTabLink
-                []
-                { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
-                , label = Element.text "Daily Drip"
-                }
+            , row []
+                [ newTabLink
+                    []
+                    { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
+                    , label = Element.text "Test-drive, part 2 "
+                    }
+                , newTabLink
+                    []
+                    { url = "https://www.dailydrip.com/topics/elm/drips/style-elements"
+                    , label = Element.text "Daily Drip"
+                    }
+                ]
             ]
 
 
 contentArea : Model -> Element Msg
 contentArea model =
-    Element.row
-        []
+    row
+        [ padding 20 ]
         [ sidebarArea model
         , mainContentArea model
         ]
@@ -177,9 +185,18 @@ singleBlock model value =
 
 mainContentArea : Model -> Element Msg
 mainContentArea model =
-    Element.row
-        [ bodyWidth model.screenSize ]
+    Element.column
+        [ bodyWidth model.screenSize
+        , Border.solid
+        , Border.width 2
+
+        -- , Border.color black
+        ]
         (blocks model)
+
+
+gutter =
+    20
 
 
 
@@ -224,9 +241,13 @@ paddingLeft n =
 
 
 --
--- view : Model -> Html Msg
 
 
+view : Model -> Html Msg
 view model =
-    Element.layout [] <|
+    Element.layout
+        [ Background.color white
+        , paddingLeft gutter
+        ]
+    <|
         wrapper model
