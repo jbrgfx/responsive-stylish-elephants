@@ -15,19 +15,19 @@ import Model exposing (..)
 blockAttributes screenSize =
     case screenSize of
         Phone ->
-            [ Element.width (px 200)
+            [ Element.width (px 600)
 
             -- , height (px 100)
             ]
 
         Tablet ->
-            [ Element.width (px 400)
+            [ Element.width (px 800)
 
             -- , height (px 100)
             ]
 
         Desktop ->
-            [ Element.width (px 600)
+            [ Element.width (px 1200)
 
             -- , height (px 100)
             ]
@@ -44,8 +44,7 @@ pageArea : Model -> Element Msg
 pageArea model =
     if model.screenSize == Phone then
         Element.column
-            [ padding gutter
-            , spaceEvenly
+            [ Element.alignLeft
             ]
             [ headerArea
             , phoneMenu -- show instead of sidebarArea
@@ -102,7 +101,7 @@ sidebarTitle =
 
 phoneMenuTitle : Element msg
 phoneMenuTitle =
-    row
+    column
         []
         [ Element.text "Phone Menu »"
         ]
@@ -114,7 +113,7 @@ phoneMenu =
         []
         [ phoneMenuTitle
         , newTabLink
-            []
+            [ Element.alignRight ]
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
             , label = Element.text "Test-drive | "
             }
@@ -188,7 +187,7 @@ bodyWidth screenSize =
 blocks : Model -> List (Element Msg)
 blocks model =
     List.map (\elem -> singleBlock model elem)
-        [ "One", "Two", "Three", "Four" ]
+        [ "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ]
 
 
 singleBlock : Model -> String -> Element Msg
