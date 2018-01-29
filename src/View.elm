@@ -187,11 +187,11 @@ contentArea model =
 
 bodyWidth screenSize =
     if screenSize == Phone then
-        Element.width (px 800)
+        Element.width (px 600)
     else if screenSize == Tablet then
-        Element.width (px 1000)
+        Element.width (px 800)
     else
-        Element.width (px 1200)
+        Element.width (px 1000)
 
 
 type alias Person =

@@ -14,9 +14,9 @@ update msg model =
 
 
 getScreenSize size =
-    if size.width <= 800 then
+    if size.width <= 700 then
         Phone
-    else if size.width <= 1000 then
+    else if size.width <= 800 then
         Tablet
     else
         Desktop
