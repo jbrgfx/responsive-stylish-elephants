@@ -183,7 +183,7 @@ bodyWidth screenSize =
     else if screenSize == Tablet then
         Element.width (px 800)
     else
-        Element.width (px 1000)
+        Element.width (px 1200)
 
 
 blocks : Model -> List (Element Msg)
