@@ -6,7 +6,6 @@ import Element.Background as Background exposing (..)
 import Element.Border as Border exposing (..)
 import Element.Font as Font exposing (..)
 import Html exposing (..)
-import Html.Events exposing (onClick)
 import Model exposing (..)
 
 
