@@ -102,25 +102,31 @@ phoneMenuTitle =
 phoneMenu : Element msg
 phoneMenu =
     row
-        [ Element.alignLeft ]
+        [ Font.size 12 ]
         [ phoneMenuTitle
         , newTabLink
             [ Font.underline
             , Font.color Color.white
             , Background.color Color.darkBlue
-            , spacingXY 10 0
             ]
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-            , label = Element.text "Test-drive Article"
+            , label = Element.text "Test-drive Article |"
             }
         , newTabLink
             [ Font.underline
             , Font.color Color.white
             , Background.color Color.darkBlue
-            , spacingXY 10 0
             ]
             { url = "https://github.com/billperegoy/elm-page-layout"
-            , label = Element.text "elm-page-layout"
+            , label = Element.text " elm-page-layout |"
+            }
+        , newTabLink
+            [ Font.underline
+            , Font.color Color.white
+            , Background.color Color.darkBlue
+            ]
+            { url = "https://github.com/lucamug/elm-spa-boilerplate"
+            , label = Element.text " elm-spa-boilerplate"
             }
         ]
 
@@ -161,6 +167,19 @@ sidebarArea model =
                     []
                     { url = "https://github.com/billperegoy/elm-page-layout"
                     , label = Element.text "elm-page-layout"
+                    }
+                ]
+            , row
+                [ Element.width (px 110)
+                , Element.alignRight
+                , Font.underline
+                , Font.color Color.blue
+                ]
+                [ newTabLink
+                    -- , newTabLink
+                    []
+                    { url = "https://github.com/lucamug/elm-spa-boilerplate"
+                    , label = Element.text "elm-spa-boilerplate"
                     }
                 ]
             ]
