@@ -44,7 +44,7 @@ pageArea model =
             , row
                 [ Font.size 14 ]
                 [ newTabLink
-                    []
+                    [ Font.mouseOverColor Color.lightBlue ]
                     { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
                     , label = Element.text "stylish-elephants 4.0.0: package docs"
                     }
@@ -69,7 +69,9 @@ headerArea =
     row
         [ Element.alignLeft ]
         [ newTabLink
-            [ Element.alignLeft ]
+            [ Element.alignLeft
+            , Font.mouseOverColor Color.darkOrange
+            ]
             { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
             , label = Element.text "stylish-elephants 4.0.0: package docs"
             }
@@ -81,7 +83,7 @@ footerArea =
     row
         [ Font.size 14 ]
         [ newTabLink
-            []
+            [ Font.mouseOverColor Color.darkOrange ]
             { url = "https://github.com/jbrgfx"
             , label = Element.text "jbrgfx's github repos"
             }
@@ -115,6 +117,7 @@ phoneMenu =
         , newTabLink
             [ Font.underline
             , Font.color Color.white
+            , Font.mouseOverColor Color.darkOrange
             , Background.color Color.darkBlue
             ]
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
@@ -123,6 +126,7 @@ phoneMenu =
         , newTabLink
             [ Font.underline
             , Font.color Color.white
+            , Font.mouseOverColor Color.darkOrange
             , Background.color Color.darkBlue
             ]
             { url = "https://github.com/billperegoy/elm-page-layout"
@@ -131,6 +135,7 @@ phoneMenu =
         , newTabLink
             [ Font.underline
             , Font.color Color.white
+            , Font.mouseOverColor Color.darkOrange
             , Background.color Color.darkBlue
             ]
             { url = "https://github.com/lucamug/elm-spa-boilerplate"
@@ -159,7 +164,7 @@ sidebarArea model =
                 , Font.color Color.blue
                 ]
                 [ newTabLink
-                    []
+                    [ Font.mouseOverColor Color.darkOrange ]
                     { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
                     , label = Element.text "Test-drive Article"
                     }
@@ -171,8 +176,7 @@ sidebarArea model =
                 , Font.color Color.blue
                 ]
                 [ newTabLink
-                    -- , newTabLink
-                    []
+                    [ Font.mouseOverColor Color.darkOrange ]
                     { url = "https://github.com/billperegoy/elm-page-layout"
                     , label = Element.text "elm-page-layout"
                     }
@@ -184,8 +188,7 @@ sidebarArea model =
                 , Font.color Color.blue
                 ]
                 [ newTabLink
-                    -- , newTabLink
-                    []
+                    [ Font.mouseOverColor Color.darkOrange ]
                     { url = "https://github.com/lucamug/elm-spa-boilerplate"
                     , label = Element.text "elm-spa-boilerplate"
                     }
