@@ -219,10 +219,39 @@ mainContentArea model =
     indexedTable attrCont
         { data = persons
         , columns =
-            [ { header = el (Element.width fill :: attrA) <| Element.text "Index", view = \index persons -> el (alternateCellAttr index) <| Element.text <| toString index }
-            , { header = el (Element.width fill :: attrA) <| Element.text "First Name", view = \index persons -> el (alternateCellAttr index) <| Element.text persons.firstName }
-            , { header = el (Element.width fill :: attrA) <| Element.text "Middle Name", view = \index persons -> el (alternateCellAttr index) <| Element.text persons.middleName }
-            , { header = el (Element.width fill :: attrA) <| Element.text "Last Name", view = \index persons -> el (alternateCellAttr index) <| Element.text persons.lastName }
+            [ { header =
+                    el (Element.width fill :: attrA) <|
+                        Element.text "Index"
+              , view =
+                    \index persons ->
+                        el (alternateCellAttr index) <|
+                            Element.text <|
+                                toString index
+              }
+            , { header =
+                    el (Element.width fill :: attrA) <|
+                        Element.text "First Name"
+              , view =
+                    \index persons ->
+                        el (alternateCellAttr index) <|
+                            Element.text persons.firstName
+              }
+            , { header =
+                    el (Element.width fill :: attrA) <|
+                        Element.text "Middle Name"
+              , view =
+                    \index persons ->
+                        el (alternateCellAttr index) <|
+                            Element.text persons.middleName
+              }
+            , { header =
+                    el (Element.width fill :: attrA) <|
+                        Element.text "Last Name"
+              , view =
+                    \index persons ->
+                        el (alternateCellAttr index) <|
+                            Element.text persons.lastName
+              }
             ]
         }
 
@@ -238,8 +267,8 @@ attrBackground =
 
 attrCont : List (Element.Attribute msg)
 attrCont =
-    [ padding 5
-    , spacing 5
+    [ padding 1
+    , spacing 1
     ]
         ++ attrBackground
 
@@ -248,7 +277,7 @@ attrA : List (Element.Attribute msg)
 attrA =
     [ Background.color <| rgb 0xD1 0xE5 0xFA
     , Font.color black
-    , padding 5
+    , padding 1
     ]
 
 
