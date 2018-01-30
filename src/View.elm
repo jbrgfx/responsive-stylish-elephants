@@ -94,6 +94,7 @@ phoneMenuTitle : Element msg
 phoneMenuTitle =
     column
         [ paddingLeft 0
+        , Element.width fill
         ]
         [ Element.text "Phone Menu »"
         ]
@@ -239,15 +240,15 @@ mainContentArea model =
         { data = persons
         , columns =
             [ { header =
-                    el (Element.width fill :: attrA) <|
-                        Element.text "Index"
-              , view =
-                    \index persons ->
-                        el (alternateCellAttr index) <|
-                            Element.text <|
-                                toString index
-              }
-            , { header =
+                    --         el (Element.width fill :: attrA) <|
+                    --             Element.text "Index"
+                    --   , view =
+                    --         \index persons ->
+                    --             el (alternateCellAttr index) <|
+                    --                 Element.text <|
+                    --                     toString index
+                    --   }
+                    -- , { header =
                     el (Element.width fill :: attrA) <|
                         Element.text "First Name"
               , view =
