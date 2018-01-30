@@ -44,7 +44,7 @@ pageArea model =
             , row
                 [ Font.size 14 ]
                 [ newTabLink
-                    [ Font.mouseOverColor Color.lightBlue ]
+                    [ Font.mouseOverColor Color.darkOrange ]
                     { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
                     , label = Element.text "stylish-elephants 4.0.0: package docs"
                     }
