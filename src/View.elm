@@ -131,11 +131,9 @@ sidebarArea model =
         Element.empty
     else
         column
-            [ Border.solid
-            , Border.width 1
-            , Element.alignLeft
+            [ Element.alignLeft
             , Element.width (px 180)
-            , Element.height (px 87)
+            , Element.height (px 110)
             , Font.size 16
             , paddingRight 10
             ]
@@ -176,9 +174,7 @@ contentArea model =
         , column
             [ Element.padding 8
             , Element.alignLeft
-            , Border.solid
-            , Border.width 1
-            , Element.width (px 380)
+            , Element.width (px 450)
             ]
             [ mainContentArea model
             ]
@@ -214,29 +210,74 @@ persons =
     ]
 
 
-mainContentArea : Model -> Element Msg
+
+-- mainContentArea : Model -> Element Msg
+
+
 mainContentArea model =
-    Element.table
-        []
+    {- Credit lucamug for the code below (shared via elm-lang-slack ) -}
+    indexedTable attrCont
         { data = persons
         , columns =
-            [ { header = Element.text "First Name"
-              , view =
-                    \person ->
-                        Element.text person.firstName
-              }
-            , { header = Element.text "Middle Name"
-              , view =
-                    \person ->
-                        Element.text person.middleName
-              }
-            , { header = Element.text "Last Name"
-              , view =
-                    \person ->
-                        Element.text person.lastName
-              }
+            [ { header = el (Element.width fill :: attrA) <| Element.text "Index", view = \index persons -> el (alternateCellAttr index) <| Element.text <| toString index }
+            , { header = el (Element.width fill :: attrA) <| Element.text "First Name", view = \index persons -> el (alternateCellAttr index) <| Element.text persons.firstName }
+            , { header = el (Element.width fill :: attrA) <| Element.text "Middle Name", view = \index persons -> el (alternateCellAttr index) <| Element.text persons.middleName }
+            , { header = el (Element.width fill :: attrA) <| Element.text "Last Name", view = \index persons -> el (alternateCellAttr index) <| Element.text persons.lastName }
             ]
         }
+
+
+attrBackground : List (Element.Attribute msg)
+attrBackground =
+    [ Background.color darkCharcoal
+
+    -- Background.color <| rgb 0x65 0x8D 0xB5
+    , Font.color white
+    ]
+
+
+attrCont : List (Element.Attribute msg)
+attrCont =
+    [ padding 5
+    , spacing 5
+    ]
+        ++ attrBackground
+
+
+attrA : List (Element.Attribute msg)
+attrA =
+    [ Background.color <| rgb 0xD1 0xE5 0xFA
+    , Font.color black
+    , padding 5
+    ]
+
+
+attrB : List (Element.Attribute msg)
+attrB =
+    [ Background.color white
+    , Font.color black
+    , padding 1
+    ]
+
+
+attrC : List (Element.Attribute msg)
+attrC =
+    [ Background.color darkBlue
+    , Font.color white
+    , padding 1
+    ]
+
+
+alternateCellAttr : Int -> List (Element.Attribute msg)
+alternateCellAttr index =
+    if index % 2 == 0 then
+        Element.width fill :: attrC
+    else
+        Element.width fill :: attrB
+
+
+
+{- Credit lucamug for the code above (shared via elm-lang-slack ) -}
 
 
 aboutExperiment =
@@ -244,7 +285,7 @@ aboutExperiment =
         [ paddingBottom 20
         , Font.size 14
         ]
-        [ Element.text "This refactoring of https://github.com/billperegoy/elm-page-layout is an experiment in converting a style-elements 4.2.1. project into one that uses the stylish-elephants 4.0.0 (the next version of style-elements)." ]
+        [ Element.text "This refactoring of https://github.com/billperegoy/elm-page-layout is an experiment in converting a style-elements 4.2.1. project into one that uses the stylish-elephants 4.0.0 (the next version of style-elements). Thanks to lucamug for adding an example of alterate row colors using indexedTable in his source: https://github.com/lucamug/elm-spa-boilerplate/blob/master/src/Pages/Examples.elm#L314,L319." ]
 
 
 gutter =
