@@ -72,7 +72,7 @@ headerArea =
 footerArea : Element msg
 footerArea =
     row
-        []
+        [ Font.size 14 ]
         [ newTabLink
             []
             { url = "https://github.com/jbrgfx"
