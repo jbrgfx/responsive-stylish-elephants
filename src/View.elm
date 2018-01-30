@@ -37,11 +37,18 @@ pageArea model =
         Element.column
             [ Element.alignLeft
             ]
-            [ headerArea
-            , phoneMenu -- show instead of sidebarArea
+            [ phoneMenu -- show instead of sidebarArea
             , contentArea model
             , aboutExperiment
             , footerArea
+            , row
+                [ Font.size 14 ]
+                [ newTabLink
+                    []
+                    { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
+                    , label = Element.text "stylish-elephants 4.0.0: package docs"
+                    }
+                ]
             ]
     else
         Element.column
