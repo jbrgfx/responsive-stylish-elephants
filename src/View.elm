@@ -38,6 +38,8 @@ pageArea model =
             [ Element.alignLeft
             ]
             [ phoneMenuTitle -- show instead of sidebarArea
+            , phoneLinkTwo
+            , phoneLinkThree
             , contentArea model
             , aboutExperiment
             , footerArea
@@ -112,8 +114,9 @@ phoneMenuTitle =
                 (Element.text "Phone Menu »")
             ]
             phoneLinkOne
-        , phoneLinkTwo
-        , phoneLinkThree
+
+        -- , phoneLinkTwo
+        -- , phoneLinkThree
         ]
 
 
