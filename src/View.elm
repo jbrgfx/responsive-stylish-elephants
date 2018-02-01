@@ -37,7 +37,7 @@ pageArea model =
         Element.column
             [ Element.alignLeft
             ]
-            [ phoneMenu -- show instead of sidebarArea
+            [ phoneMenuTitle -- show instead of sidebarArea
             , contentArea model
             , aboutExperiment
             , footerArea
@@ -101,20 +101,25 @@ sidebarTitle =
 
 phoneMenuTitle : Element msg
 phoneMenuTitle =
-    column
+    row
         [ paddingLeft 0
         , Element.width fill
         , Font.size 14
         ]
-        [ Element.text "Phone Menu » " ]
+        [ Element.el
+            [ Element.above
+                True
+                (Element.text "Phone Menu »")
+            ]
+            phoneMenu
+        ]
 
 
 phoneMenu : Element msg
 phoneMenu =
     row
-        [ Font.size 14 ]
-        [ phoneMenuTitle
-        , newTabLink
+        [ Font.size 18 ]
+        [ newTabLink
             [ Font.underline
             , Font.color Color.white
             , Font.mouseOverColor Color.darkOrange
