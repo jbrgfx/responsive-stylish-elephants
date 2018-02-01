@@ -104,15 +104,15 @@ phoneMenuTitle =
     column
         [ paddingLeft 0
         , Element.width fill
+        , Font.size 14
         ]
-        [ Element.text "Phone Menu »"
-        ]
+        [ Element.text "Phone Menu » " ]
 
 
 phoneMenu : Element msg
 phoneMenu =
     row
-        [ Font.size 12 ]
+        [ Font.size 14 ]
         [ phoneMenuTitle
         , newTabLink
             [ Font.underline
