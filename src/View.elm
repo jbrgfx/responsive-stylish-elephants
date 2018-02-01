@@ -103,7 +103,9 @@ sidebarTitle =
 phoneMenuTitle : Element msg
 phoneMenuTitle =
     row
-        [ Font.size 18 ]
+        [ Font.size 20
+        , paddingTop 20
+        ]
         [ Element.el
             [ Element.above
                 True
@@ -116,10 +118,8 @@ phoneMenuTitle =
 phoneLinkOne =
     newTabLink
         [ Font.underline
-        , Font.size 18
-        , Font.color Color.white
+        , Font.color Color.darkBlue
         , Font.mouseOverColor Color.darkOrange
-        , Background.color Color.darkBlue
         ]
         { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
         , label = Element.text "Test-drive Article"
@@ -129,9 +129,8 @@ phoneLinkOne =
 phoneLinkTwo =
     newTabLink
         [ Font.underline
-        , Font.color Color.white
+        , Font.color Color.darkBlue
         , Font.mouseOverColor Color.darkOrange
-        , Background.color Color.darkBlue
         ]
         { url = "https://github.com/billperegoy/elm-page-layout"
         , label = Element.text "elm-page-layout"
@@ -141,9 +140,10 @@ phoneLinkTwo =
 phoneLinkThree =
     newTabLink
         [ Font.underline
-        , Font.color Color.white
+        , Font.color Color.darkBlue
         , Font.mouseOverColor Color.darkOrange
-        , Background.color Color.darkBlue
+
+        -- , Background.color Color.darkBlue
         ]
         { url = "https://github.com/lucamug/elm-spa-boilerplate"
         , label = Element.text "elm-spa-boilerplate"
