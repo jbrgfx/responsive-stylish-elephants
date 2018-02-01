@@ -21,7 +21,9 @@ And view it:
     localhost:8000/src/Main.elm
 
 The desktop view:
+
 ![screenshot of the default state](/public/desktop.png)
 
 The phone view:
+
 ![screenshot of the phone state](/public/phone.png)
