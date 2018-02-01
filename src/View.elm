@@ -35,9 +35,8 @@ pageArea : Model -> Element Msg
 pageArea model =
     if model.screenSize == Phone then
         Element.column
-            [ Element.alignLeft
-            ]
-            [ phoneMenuTitle -- show instead of sidebarArea
+            [ spacing 10 ]
+            [ phoneMenuTitle -- Includes phoneLinkOne
             , phoneLinkTwo
             , phoneLinkThree
             , contentArea model
@@ -104,25 +103,20 @@ sidebarTitle =
 phoneMenuTitle : Element msg
 phoneMenuTitle =
     row
-        [ paddingLeft 0
-        , Element.width fill
-        , Font.size 14
-        ]
+        [ Font.size 18 ]
         [ Element.el
             [ Element.above
                 True
-                (Element.text "Phone Menu »")
+                (Element.text "Phone Menu")
             ]
             phoneLinkOne
-
-        -- , phoneLinkTwo
-        -- , phoneLinkThree
         ]
 
 
 phoneLinkOne =
     newTabLink
         [ Font.underline
+        , Font.size 18
         , Font.color Color.white
         , Font.mouseOverColor Color.darkOrange
         , Background.color Color.darkBlue
@@ -140,7 +134,7 @@ phoneLinkTwo =
         , Background.color Color.darkBlue
         ]
         { url = "https://github.com/billperegoy/elm-page-layout"
-        , label = Element.text " elm-page-layout"
+        , label = Element.text "elm-page-layout"
         }
 
 
@@ -152,43 +146,8 @@ phoneLinkThree =
         , Background.color Color.darkBlue
         ]
         { url = "https://github.com/lucamug/elm-spa-boilerplate"
-        , label = Element.text " elm-spa-boilerplate"
+        , label = Element.text "elm-spa-boilerplate"
         }
-
-
-
--- phoneMenu : Element msg
--- phoneMenu =
---     row
---         [ Font.size 18 ]
---         [ newTabLink
---             [ Font.underline
---             , Font.color Color.white
---             , Font.mouseOverColor Color.darkOrange
---             , Background.color Color.darkBlue
---             ]
---             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
---             , label = Element.text "Test-drive Article |"
---             }
---         , newTabLink
---             [ Font.underline
---             , Font.color Color.white
---             , Font.mouseOverColor Color.darkOrange
---             , Background.color Color.darkBlue
---             ]
---             { url = "https://github.com/billperegoy/elm-page-layout"
---             , label = Element.text " elm-page-layout |"
---             }
---         , newTabLink
---             [ Font.underline
---             , Font.color Color.white
---             , Font.mouseOverColor Color.darkOrange
---             , Background.color Color.darkBlue
---             ]
---             { url = "https://github.com/lucamug/elm-spa-boilerplate"
---             , label = Element.text " elm-spa-boilerplate"
---             }
---         ]
 
 
 sidebarArea : Model -> Element Msg
