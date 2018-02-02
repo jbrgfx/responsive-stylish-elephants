@@ -35,15 +35,16 @@ pageArea : Model -> Element Msg
 pageArea model =
     if model.screenSize == Phone then
         Element.column
-            [ spacing 10 ]
-            [ phoneMenuTitle -- Includes phoneLinkOne
+            [ padding 10
+            , spacing 10
+            ]
+            [ phoneLinkOne -- Includes phoneLinkOne
             , phoneLinkTwo
             , phoneLinkThree
             , contentArea model
             , aboutExperiment
             , footerArea
-            , row
-                [ Font.size 14 ]
+            , row [ Font.size 14 ]
                 [ newTabLink
                     [ Font.mouseOverColor Color.darkOrange ]
                     { url = "http://package.elm-lang.org/packages/mdgriffith/stylish-elephants/4.0.0"
@@ -100,54 +101,78 @@ sidebarTitle =
         ]
 
 
-phoneMenuTitle : Element msg
-phoneMenuTitle =
-    row
-        [ Font.size 20
-        , paddingTop 20
-        ]
-        [ Element.el
-            [ Element.above
-                True
-                (Element.text "Phone Menu")
-            ]
-            phoneLinkOne
-        ]
+
+-- phoneMenuTitle : Element msg
+-- phoneMenuTitle =
+--     row
+--         [ spacing 20
+--         , Element.height (px 40)
+--         , Element.width fill
+--         , Font.size 20
+--         , Font.color Color.darkOrange
+--         ]
+--         [ Element.el
+--             [ Element.above
+--                 True
+--                 (Element.text "  Phone Menu")
+--             ]
+--             phoneLinkOne
+--         ]
 
 
 phoneLinkOne =
-    newTabLink
-        [ Font.underline
-        , Font.color Color.darkBlue
-        , Font.mouseOverColor Color.darkOrange
+    row
+        [ spacing 20
+        , Element.height (px 60)
+        , Background.color darkBlue
+        , Font.size 20
+        , Font.color Color.orange
+        , Background.mouseOverColor Color.lightOrange
+        , Font.mouseOverColor Color.darkBlue
         ]
-        { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
-        , label = Element.text "Test-drive Article"
-        }
+        [ newTabLink
+            [ Font.underline ]
+            { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
+            , label = Element.text "Test-drive Article"
+            }
+        ]
 
 
 phoneLinkTwo =
-    newTabLink
-        [ Font.underline
-        , Font.color Color.darkBlue
-        , Font.mouseOverColor Color.darkOrange
+    row
+        [ spacing 20
+        , Element.height (px 60)
+        , Element.width fill
+        , Background.color darkBlue
+        , Font.size 20
+        , Font.color Color.orange
+        , Background.mouseOverColor Color.lightOrange
+        , Font.mouseOverColor Color.darkBlue
         ]
-        { url = "https://github.com/billperegoy/elm-page-layout"
-        , label = Element.text "elm-page-layout"
-        }
+        [ newTabLink [ Font.underline ]
+            { url = "https://github.com/billperegoy/elm-page-layout"
+            , label = Element.text "Elm-page-layout"
+            }
+        ]
 
 
 phoneLinkThree =
-    newTabLink
-        [ Font.underline
-        , Font.color Color.darkBlue
-        , Font.mouseOverColor Color.darkOrange
-
-        -- , Background.color Color.darkBlue
+    row
+        [ spacing 20
+        , Element.height (px 60)
+        , Element.width fill
+        , Background.color darkBlue
+        , Font.size 20
+        , Font.color Color.orange
+        , Background.mouseOverColor Color.lightOrange
+        , Font.mouseOverColor Color.darkBlue
         ]
-        { url = "https://github.com/lucamug/elm-spa-boilerplate"
-        , label = Element.text "elm-spa-boilerplate"
-        }
+        [ newTabLink
+            []
+            { url = "https://github.com/lucamug/elm-spa-boilerplate"
+            , label = Element.text "Elm-spa-boilerplate"
+            }
+        ]
 
 
 sidebarArea : Model -> Element Msg
