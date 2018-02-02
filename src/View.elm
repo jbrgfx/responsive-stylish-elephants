@@ -131,7 +131,7 @@ phoneLinkOne =
         , Font.mouseOverColor Color.darkBlue
         ]
         [ newTabLink
-            [ Font.underline ]
+            []
             { url = "https://becoming-functional.com/responsive-design-with-elm-style-elements-9d0eca8eb9ed"
             , label = Element.text "Test-drive Article"
             }
@@ -149,7 +149,8 @@ phoneLinkTwo =
         , Background.mouseOverColor Color.lightOrange
         , Font.mouseOverColor Color.darkBlue
         ]
-        [ newTabLink [ Font.underline ]
+        [ newTabLink
+            []
             { url = "https://github.com/billperegoy/elm-page-layout"
             , label = Element.text "Elm-page-layout"
             }
