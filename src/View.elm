@@ -38,7 +38,7 @@ pageArea model =
             [ padding 10
             , spacing 10
             ]
-            [ phoneLinkOne -- Includes phoneLinkOne
+            [ phoneLinkOne
             , phoneLinkTwo
             , phoneLinkThree
             , contentArea model
@@ -99,25 +99,6 @@ sidebarTitle =
         ]
         [ Element.text "Sidebar Links"
         ]
-
-
-
--- phoneMenuTitle : Element msg
--- phoneMenuTitle =
---     row
---         [ spacing 20
---         , Element.height (px 40)
---         , Element.width fill
---         , Font.size 20
---         , Font.color Color.darkOrange
---         ]
---         [ Element.el
---             [ Element.above
---                 True
---                 (Element.text "  Phone Menu")
---             ]
---             phoneLinkOne
---         ]
 
 
 phoneLinkOne =
@@ -272,25 +253,12 @@ persons =
     ]
 
 
-
--- mainContentArea : Model -> Element Msg
-
-
 mainContentArea model =
     {- Credit lucamug for the code below (shared via elm-lang-slack ) -}
     indexedTable attrCont
         { data = persons
         , columns =
             [ { header =
-                    --         el (Element.width fill :: attrA) <|
-                    --             Element.text "Index"
-                    --   , view =
-                    --         \index persons ->
-                    --             el (alternateCellAttr index) <|
-                    --                 Element.text <|
-                    --                     toString index
-                    --   }
-                    -- , { header =
                     el (Element.width fill :: attrA) <|
                         Element.text "First Name"
               , view =
@@ -321,8 +289,6 @@ mainContentArea model =
 attrBackground : List (Element.Attribute msg)
 attrBackground =
     [ Background.color darkCharcoal
-
-    -- Background.color <| rgb 0x65 0x8D 0xB5
     , Font.color white
     ]
 
