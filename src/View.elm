@@ -126,7 +126,7 @@ phoneLinkOne =
         , Element.height (px 60)
         , Background.color darkBlue
         , Font.size 20
-        , Font.color Color.orange
+        , Font.color Color.white
         , Background.mouseOverColor Color.lightOrange
         , Font.mouseOverColor Color.darkBlue
         ]
@@ -145,7 +145,7 @@ phoneLinkTwo =
         , Element.width fill
         , Background.color darkBlue
         , Font.size 20
-        , Font.color Color.orange
+        , Font.color Color.white
         , Background.mouseOverColor Color.lightOrange
         , Font.mouseOverColor Color.darkBlue
         ]
@@ -163,7 +163,7 @@ phoneLinkThree =
         , Element.width fill
         , Background.color darkBlue
         , Font.size 20
-        , Font.color Color.orange
+        , Font.color Color.white
         , Background.mouseOverColor Color.lightOrange
         , Font.mouseOverColor Color.darkBlue
         ]
